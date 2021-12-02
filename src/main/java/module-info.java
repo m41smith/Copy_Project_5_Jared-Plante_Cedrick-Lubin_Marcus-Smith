@@ -8,6 +8,6 @@ module com.project5.project_5_jaredplante_cedricklubin_marcussmith {
     requires java.net.http;
     requires com.google.gson;
 
-    opens com.project5.project_5_jaredplante_cedricklubin_marcussmith to javafx.fxml;
+    opens com.project5.project_5_jaredplante_cedricklubin_marcussmith to javafx.fxml, com.google.gson;
     exports com.project5.project_5_jaredplante_cedricklubin_marcussmith;
 }

@@ -1,15 +1,59 @@
 package com.project5.project_5_jaredplante_cedricklubin_marcussmith;
 
+import javafx.beans.Observable;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
+import javafx.scene.control.TextField;
+import javafx.scene.control.TextInputDialog;
 
-public class GOTAPIWindowController {
-    @FXML
-    private Label GOTLabel;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.ResourceBundle;
 
+
+public class GOTAPIWindowController implements Initializable {
     @FXML
-    public void handleButton(){
-        GOTLabel.setText("hello");
+    private TextField ISBNField;
+    @FXML
+    private TextField PageNumField;
+    @FXML
+    private ListView<GOTDataHandler.GOTDataType> BookList;
+    @FXML
+    private ListView<String> CharacterList;
+    private GOTDataHandler Model;
+
+    public void loadData() {
+        var site = "https://www.anapioficeandfire.com/api/books";
+        Model = new GOTDataHandler(site);
+        var bookList = Model.getData();
+        ObservableList<GOTDataHandler.GOTDataType> dataToShow =
+                FXCollections.observableArrayList(bookList);
+        BookList.setItems(dataToShow);
+    }
+    public void loadCharacterData(){
+
     }
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        loadData();
+        BookList.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<GOTDataHandler.GOTDataType>() {
+            @Override
+            public void changed(ObservableValue<? extends GOTDataHandler.GOTDataType> observableValue, GOTDataHandler.GOTDataType gotDataType, GOTDataHandler.GOTDataType t1) {
+                ISBNField.setText(t1.isbn);
+                PageNumField.setText(String.valueOf(t1.numberOfPages));
+                var povCharList = t1.povCharacters;
+                ObservableList<String> characterShow =
+                        FXCollections.observableArrayList(povCharList);
+                CharacterList.setItems(characterShow);
+            }
+        });
+    }
 }
