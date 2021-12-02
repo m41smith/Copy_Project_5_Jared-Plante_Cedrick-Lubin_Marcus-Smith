@@ -13,6 +13,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.TextInputDialog;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -36,6 +37,9 @@ public class GOTAPIWindowController implements Initializable {
                 FXCollections.observableArrayList(bookList);
         BookList.setItems(dataToShow);
     }
+    public void loadCharacterData(){
+
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -45,7 +49,10 @@ public class GOTAPIWindowController implements Initializable {
             public void changed(ObservableValue<? extends GOTDataHandler.GOTDataType> observableValue, GOTDataHandler.GOTDataType gotDataType, GOTDataHandler.GOTDataType t1) {
                 ISBNField.setText(t1.isbn);
                 PageNumField.setText(String.valueOf(t1.numberOfPages));
-                CharacterList.setItems((ObservableList<String>) t1.povCharacters);
+                var povCharList = t1.povCharacters;
+                ObservableList<String> characterShow =
+                        FXCollections.observableArrayList(povCharList);
+                CharacterList.setItems(characterShow);
             }
         });
     }

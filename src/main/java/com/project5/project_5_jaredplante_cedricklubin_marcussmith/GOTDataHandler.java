@@ -41,7 +41,10 @@ public class GOTDataHandler {
         String isbn;
         Integer numberOfPages;
         ArrayList<String> povCharacters;
+        @Override
+        public String toString(){
+            return name;
+
+        }
     }
-
-
 }
