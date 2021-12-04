@@ -11,12 +11,14 @@ import com.google.gson.Gson;
 public class GOTDataHandler {
     private HttpClient dataGrabber;
     private String webLocation;
+    private String responseBody;
 
     public GOTDataHandler(String webLocation) {
         dataGrabber = HttpClient.newHttpClient();
         this.webLocation = webLocation;
+        responseBody = null;
     }
-    public GOTDataType[] getData(){
+    public String dataGrab(){
         var httpbuilder = HttpRequest.newBuilder();
         var dataRequest = httpbuilder.uri(URI.create(webLocation)).build();
         HttpResponse<String> response= null;
@@ -31,47 +33,23 @@ public class GOTDataHandler {
             System.out.println("Something went very wrong, quitting program");
             System.exit(-1);
         }
-        var responseBody = response.body();
+        responseBody = response.body();
+        return responseBody;
+    }
+    public GOTDataType[] getData(){
+        dataGrab();
         var jsonInterpreter = new Gson();
         var GOTData = jsonInterpreter.fromJson(responseBody, GOTDataType[].class);
         return GOTData;
     }
     public GOTCharDataType[] getcharData(){
-        var httpbuilder = HttpRequest.newBuilder();
-        var dataRequest = httpbuilder.uri(URI.create(webLocation)).build();
-        HttpResponse<String> response= null;
-        try{
-            response = dataGrabber.send(dataRequest, HttpResponse.BodyHandlers.ofString());
-        }catch (IOException exception){
-            System.out.println("Error with the network");
-        }catch (InterruptedException e){
-            System.out.println("Error completing data transfer");
-        }
-        if(response == null){
-            System.out.println("Something went very wrong, quitting program");
-            System.exit(-1);
-        }
-        var responseBody = response.body();
+        dataGrab();
         var jsonInterpreter = new Gson();
         var GOTCharData = jsonInterpreter.fromJson(responseBody, GOTCharDataType[].class);
         return GOTCharData;
     }
     public GOTCharDataType getSingleCharData(){
-        var httpbuilder = HttpRequest.newBuilder();
-        var dataRequest = httpbuilder.uri(URI.create(webLocation)).build();
-        HttpResponse<String> response= null;
-        try{
-            response = dataGrabber.send(dataRequest, HttpResponse.BodyHandlers.ofString());
-        }catch (IOException exception){
-            System.out.println("Error with the network");
-        }catch (InterruptedException e){
-            System.out.println("Error completing data transfer");
-        }
-        if(response == null){
-            System.out.println("Something went very wrong, quitting program");
-            System.exit(-1);
-        }
-        var responseBody = response.body();
+        dataGrab();
         var jsonInterpreter = new Gson();
         var GOTCharData = jsonInterpreter.fromJson(responseBody, GOTCharDataType.class);
         return GOTCharData;
