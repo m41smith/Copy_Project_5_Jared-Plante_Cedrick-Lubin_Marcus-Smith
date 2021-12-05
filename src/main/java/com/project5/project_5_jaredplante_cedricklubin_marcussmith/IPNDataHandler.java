@@ -7,15 +7,24 @@ import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
-import java.util.ArrayList;
+import java.util.Map;
 
 public class IPNDataHandler {
-   /* public static void main(String[] args)
-    {
-        var comp152Inc = new IPNDataHandler("http://country.io/names.json");
-        System.out.println(comp152Inc.Response());
 
-    }*/
+
+    /*public static void main(String[] args)
+     {
+         var comp152Inc = new IPNDataHandler("http://country.io/names.json");
+         var comp152Inc2 = new IPNDataHandler("http://country.io/phone.json");
+         System.out.println(comp152Inc.getData().toString());
+         System.out.println(comp152Inc2.getData().toString());
+
+         System.out.println(comp152Inc2.getData().keySet().toString());
+         System.out.println(comp152Inc2.getData().values().toArray());
+     }*/
+
+
+
     private HttpClient dataGrabber;
     private String webLocation;
 
@@ -26,34 +35,7 @@ public class IPNDataHandler {
 
 
 
-    public PhoneDataType[] getData(){
-        var jsonInterpreter = new Gson();
-        var cPData = jsonInterpreter.fromJson(Response(),PhoneDataType[].class);
-        return cPData;
-    }
-    public CountryDataType[] getCData(){
-        var jsonInterpreter = new Gson();
-        var cData = jsonInterpreter.fromJson(Response(),CountryDataType[].class);
-        return cData;
-    }
-
-
-    class PhoneDataType{
-        String countryCode;
-        String phonePrefix;
-    }
-
-    class CountryDataType{
-        String countryCode;
-        String country;
-
-        @Override
-        public String toString(){
-            return country;
-        }
-    }
-
-    public String Response(){
+    public Map getData(){
         var httpBuilder = HttpRequest.newBuilder();
         var dataRequest = httpBuilder.uri(URI.create(webLocation)).build();
         HttpResponse<String> response = null;
@@ -71,7 +53,8 @@ public class IPNDataHandler {
             System.exit(-1);
         }
         var responseBody = response.body();
-        return  responseBody;
+        var gson = new Gson();
+        var Data = gson.fromJson(responseBody,Map.class);
+        return Data;
     }
-
 }
