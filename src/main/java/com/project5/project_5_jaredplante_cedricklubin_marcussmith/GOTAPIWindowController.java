@@ -1,5 +1,6 @@
 package com.project5.project_5_jaredplante_cedricklubin_marcussmith;
 
+import com.google.gson.JsonSyntaxException;
 import javafx.beans.Observable;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -26,8 +27,9 @@ public class GOTAPIWindowController implements Initializable {
     @FXML
     private ListView<GOTDataHandler.GOTDataType> BookList;
     @FXML
-    private ListView<String> CharacterList;
+    private ListView<GOTDataHandler.GOTCharDataType> CharacterList;
     private GOTDataHandler Model;
+    private GOTDataHandler charModel;
 
     public void loadData() {
         var site = "https://www.anapioficeandfire.com/api/books";
@@ -37,8 +39,17 @@ public class GOTAPIWindowController implements Initializable {
                 FXCollections.observableArrayList(bookList);
         BookList.setItems(dataToShow);
     }
-    public void loadCharacterData(){
+    public void loadCharacterData(String site){
+        charModel = new GOTDataHandler(site);
+        try {
+            var person = charModel.getSingleCharData();
+                CharacterList.getItems().add(person);
+        }catch(JsonSyntaxException e){
+            var charList = charModel.getcharData();
+            for(var person : charList)
+            CharacterList.getItems().add(person);
 
+        }
     }
 
     @Override
@@ -47,12 +58,13 @@ public class GOTAPIWindowController implements Initializable {
         BookList.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<GOTDataHandler.GOTDataType>() {
             @Override
             public void changed(ObservableValue<? extends GOTDataHandler.GOTDataType> observableValue, GOTDataHandler.GOTDataType gotDataType, GOTDataHandler.GOTDataType t1) {
+                CharacterList.getItems().clear();
                 ISBNField.setText(t1.isbn);
                 PageNumField.setText(String.valueOf(t1.numberOfPages));
                 var povCharList = t1.povCharacters;
-                ObservableList<String> characterShow =
-                        FXCollections.observableArrayList(povCharList);
-                CharacterList.setItems(characterShow);
+                for(var character : povCharList)
+                loadCharacterData(character);
+
             }
         });
     }
