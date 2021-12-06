@@ -38,12 +38,12 @@ public class WindowController {
         try{
             nextScene = new Scene(test.load(), 900, 600);
         }catch (IOException e){
-            System.out.println("Couldn't load next window");
+            System.out.println("Couldn't load Star Wars window");
             e.printStackTrace();
         }
         Stage secondWindow = new Stage();
         secondWindow.setScene(nextScene);
-        secondWindow.setTitle("See  - here is the next window");
+        secondWindow.setTitle("See  - here is the Star Wars window");
         secondWindow.show();
     }
 
