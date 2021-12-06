@@ -14,9 +14,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.TextInputDialog;
 
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.ResourceBundle;
+import java.util.*;
 
 
 public class GOTAPIWindowController implements Initializable {
@@ -24,6 +22,12 @@ public class GOTAPIWindowController implements Initializable {
     private TextField ISBNField;
     @FXML
     private TextField PageNumField;
+    @FXML
+    private TextField BornField;
+    @FXML
+    private TextField DiedField;
+    @FXML
+    private TextField ActorField;
     @FXML
     private ListView<GOTDataHandler.GOTDataType> BookList;
     @FXML
@@ -57,15 +61,36 @@ public class GOTAPIWindowController implements Initializable {
         loadData();
         BookList.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<GOTDataHandler.GOTDataType>() {
             @Override
-            public void changed(ObservableValue<? extends GOTDataHandler.GOTDataType> observableValue, GOTDataHandler.GOTDataType gotDataType, GOTDataHandler.GOTDataType t1) {
+            public void changed(ObservableValue<? extends GOTDataHandler.GOTDataType> observableValue,
+                                GOTDataHandler.GOTDataType gotDataType, GOTDataHandler.GOTDataType t1) {
+                BornField.clear();
+                DiedField.clear();
+                ActorField.clear();
                 CharacterList.getItems().clear();
                 ISBNField.setText(t1.isbn);
                 PageNumField.setText(String.valueOf(t1.numberOfPages));
                 var povCharList = t1.povCharacters;
                 for(var character : povCharList)
                 loadCharacterData(character);
-
             }
         });
+                CharacterList.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<GOTDataHandler.GOTCharDataType>() {
+                    @Override
+                    public void changed(ObservableValue<? extends GOTDataHandler.GOTCharDataType> observable,
+                                        GOTDataHandler.GOTCharDataType oldValue, GOTDataHandler.GOTCharDataType newValue) {
+                        if(newValue != null) {
+                            BornField.setText(newValue.born);
+                            DiedField.setText(newValue.died);
+//                            var actorList = newValue.playedBy;
+//                            for(var actors : actorList){
+//                                var splitActors = actors.split("[,]");
+//                                ActorField.getText().split("[,]")
+//                            }
+                            var actors = newValue.playedBy;
+                            var splitActors = actors.toString();
+                            ActorField.setText(splitActors);
+                        }
+                    }
+                });
     }
 }
