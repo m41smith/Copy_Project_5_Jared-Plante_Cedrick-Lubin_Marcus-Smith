@@ -76,5 +76,16 @@ public class GOTDataHandler {
         public String toString(){
             return name;
         }
+        public String actorString(){
+            StringBuilder stringList = new StringBuilder();
+            for(var i : playedBy){
+                if(stringList.isEmpty())
+                stringList.append(i);
+                else{
+                    stringList.append(", ").append(i);
+                }
+            }
+            return stringList.toString();
+        }
     }
 }

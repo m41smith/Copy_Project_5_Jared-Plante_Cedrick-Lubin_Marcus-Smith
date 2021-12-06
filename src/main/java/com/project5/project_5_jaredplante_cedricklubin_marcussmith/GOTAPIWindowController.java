@@ -86,9 +86,8 @@ public class GOTAPIWindowController implements Initializable {
 //                                var splitActors = actors.split("[,]");
 //                                ActorField.getText().split("[,]")
 //                            }
-                            var actors = newValue.playedBy;
-                            var splitActors = actors.toString();
-                            ActorField.setText(splitActors);
+                            var actors = newValue.actorString();
+                            ActorField.setText(actors);
                         }
                     }
                 });
