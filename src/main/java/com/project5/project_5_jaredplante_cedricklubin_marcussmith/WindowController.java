@@ -32,6 +32,22 @@ public class WindowController {
     }
 
     @FXML
+    public void handleOpenStarWarsWindow(ActionEvent event){
+        var test = new FXMLLoader(APIApplication.class.getResource("StarWarsAPI_MarcusSmith.fxml"));
+        Scene nextScene = null;
+        try{
+            nextScene = new Scene(test.load(), 900, 600);
+        }catch (IOException e){
+            System.out.println("Couldn't load next window");
+            e.printStackTrace();
+        }
+        Stage secondWindow = new Stage();
+        secondWindow.setScene(nextScene);
+        secondWindow.setTitle("See  - here is the next window");
+        secondWindow.show();
+    }
+
+    @FXML
     public void handleClose(ActionEvent event){
         System.exit(0);
     }

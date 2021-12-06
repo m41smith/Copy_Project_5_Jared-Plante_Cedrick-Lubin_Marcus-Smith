@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="300.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.project5.project_5_jaredplante_cedricklubin_marcussmith.SWWindowController">
+   <children>
+      <SplitPane prefHeight="400.0" prefWidth="600.0">
+         <items>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <ListView fx:id="ListControl" prefHeight="398.0" prefWidth="200.0" />
+                  <VBox layoutX="200.0" prefHeight="398.0" prefWidth="398.0">
+                     <children>
+                        <HBox prefHeight="62.0" prefWidth="398.0">
+                           <children>
+                              <Label alignment="CENTER_RIGHT" prefHeight="17.0" prefWidth="175.0" text="Name:" />
+                              <TextField fx:id="Name" prefHeight="38.0" prefWidth="224.0" />
+                           </children></HBox>
+                        <HBox prefHeight="62.0" prefWidth="398.0">
+                           <children>
+                              <Label alignment="CENTER_RIGHT" prefHeight="17.0" prefWidth="177.0" text="Height:" />
+                              <TextField fx:id="Height" prefHeight="41.0" prefWidth="222.0" />
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <Label alignment="CENTER_RIGHT" prefHeight="17.0" prefWidth="178.0" text="DoB:" />
+                              <TextField fx:id="DoB" prefHeight="41.0" prefWidth="222.0" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+               </children>
+            </AnchorPane>
+         </items>
+      </SplitPane>
+   </children>
+</AnchorPane>
