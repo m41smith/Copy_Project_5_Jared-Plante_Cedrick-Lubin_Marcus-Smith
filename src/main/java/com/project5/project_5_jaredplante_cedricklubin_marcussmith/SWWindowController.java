@@ -29,9 +29,9 @@ public class SWWindowController implements Initializable {
         var params = getQueryParams();
         var query = site+params;
         Model = new SWDataHandler(query);
-        var univList = Model.getData();
+        var SWList = Model.getData();
         ObservableList<SWDataHandler.StarWarsDataType> dataToShow =
-                FXCollections.observableArrayList(univList);
+                FXCollections.observableArrayList(SWList);
         ListControl.setItems(dataToShow);
     }
 
@@ -52,5 +52,13 @@ public class SWWindowController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         loadData();
+        ListControl.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<SWDataHandler.StarWarsDataType>() {
+            @Override
+            public void changed(ObservableValue<? extends SWDataHandler.StarWarsDataType> observable, SWDataHandler.StarWarsDataType oldValue, SWDataHandler.StarWarsDataType newValue) {
+                Name.setText(newValue.name);
+                Height.setText(newValue.height);
+                DoB.setText(newValue.birth_year);
+            }
+        });
     }
 }
