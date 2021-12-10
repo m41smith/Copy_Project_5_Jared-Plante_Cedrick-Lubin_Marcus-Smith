@@ -1,5 +1,8 @@
+//Marcus Smith
+
 package com.project5.project_5_jaredplante_cedricklubin_marcussmith;
 
+//imports needed packages
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -10,7 +13,6 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextInputDialog;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class SWWindowController implements Initializable {
@@ -39,6 +41,7 @@ public class SWWindowController implements Initializable {
         ListControl.setItems(dataToShow);
     }
 
+    //wait's for user input
     private String getQueryParams() {
         TextInputDialog inputGrabber = new TextInputDialog("Luke");
         inputGrabber.setHeaderText("Gathering Information for query");
@@ -51,6 +54,7 @@ public class SWWindowController implements Initializable {
             return "";
         }
     }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         loadData();
@@ -60,9 +64,10 @@ public class SWWindowController implements Initializable {
                 Name.setText(newValue.name);
                 Height.setText(newValue.height + "cm");
                 DoB.setText(newValue.birth_year);
-                HomeWorld.setText(newValue.homeworld);
-                var filmList = FXCollections.observableArrayList(newValue.films);
-                Films.setItems(filmList);
+                var planet = Model.getPlanetData().toString();
+                HomeWorld.setText(planet);
+                var test = FXCollections.observableArrayList(Model.getFilmData());
+                Films.setItems(test);
             }
         });
     }

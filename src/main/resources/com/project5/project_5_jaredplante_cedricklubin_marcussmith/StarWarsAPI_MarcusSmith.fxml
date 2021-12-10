@@ -16,42 +16,42 @@
                         <HBox prefHeight="129.0" prefWidth="698.0" />
                         <HBox prefHeight="60.0" prefWidth="698.0">
                            <children>
-                              <Label alignment="CENTER_RIGHT" prefHeight="40.0" prefWidth="200.0" text="Name:">
+                              <Label alignment="CENTER_RIGHT" prefHeight="40.0" prefWidth="200.0" text="Name: ">
                                  <font>
                                     <Font size="14.0" />
                                  </font></Label>
-                              <TextField fx:id="Name" prefHeight="40.0" prefWidth="225.0" />
+                              <TextField fx:id="Name" alignment="CENTER" prefHeight="40.0" prefWidth="225.0" />
                            </children></HBox>
                         <HBox prefHeight="60.0" prefWidth="398.0">
                            <children>
-                              <Label alignment="CENTER_RIGHT" prefHeight="40.0" prefWidth="200.0" text="Height:">
+                              <Label alignment="CENTER_RIGHT" prefHeight="40.0" prefWidth="200.0" text="Height: ">
                                  <font>
                                     <Font size="14.0" />
                                  </font></Label>
-                              <TextField fx:id="Height" prefHeight="40.0" prefWidth="225.0" />
+                              <TextField fx:id="Height" alignment="CENTER" prefHeight="40.0" prefWidth="225.0" />
                            </children>
                         </HBox>
                         <HBox prefHeight="60.0" prefWidth="698.0">
                            <children>
-                              <Label alignment="CENTER_RIGHT" prefHeight="40.0" prefWidth="200.0" text="DoB:">
+                              <Label alignment="CENTER_RIGHT" prefHeight="40.0" prefWidth="200.0" text="DoB: ">
                                  <font>
                                     <Font size="14.0" />
                                  </font></Label>
-                              <TextField fx:id="DoB" prefHeight="40.0" prefWidth="225.0" />
+                              <TextField fx:id="DoB" alignment="CENTER" prefHeight="40.0" prefWidth="225.0" />
                            </children>
                         </HBox>
                         <HBox prefHeight="60.0" prefWidth="200.0">
                            <children>
-                              <Label alignment="CENTER_RIGHT" prefHeight="40.0" prefWidth="200.0" text="Home Planet:">
+                              <Label alignment="CENTER_RIGHT" prefHeight="40.0" prefWidth="200.0" text="Home Planet: ">
                                  <font>
                                     <Font size="14.0" />
                                  </font></Label>
-                              <TextField fx:id="HomeWorld" prefHeight="40.0" prefWidth="225.0" />
+                              <TextField fx:id="HomeWorld" alignment="CENTER" prefHeight="40.0" prefWidth="225.0" />
                            </children>
                         </HBox>
                         <HBox prefHeight="230.0" prefWidth="698.0">
                            <children>
-                              <Label alignment="CENTER_RIGHT" prefHeight="40.0" prefWidth="200.0" text="Films:">
+                              <Label alignment="CENTER_RIGHT" prefHeight="40.0" prefWidth="200.0" text="Films: ">
                                  <font>
                                     <Font size="14.0" />
                                  </font></Label>
