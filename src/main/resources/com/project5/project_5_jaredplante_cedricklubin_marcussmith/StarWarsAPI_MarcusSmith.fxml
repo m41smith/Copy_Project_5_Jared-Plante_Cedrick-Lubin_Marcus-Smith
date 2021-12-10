@@ -46,12 +46,16 @@
                                  <font>
                                     <Font size="14.0" />
                                  </font></Label>
-                              <TextField prefHeight="40.0" prefWidth="225.0" />
+                              <TextField fx:id="HomeWorld" prefHeight="40.0" prefWidth="225.0" />
                            </children>
                         </HBox>
                         <HBox prefHeight="230.0" prefWidth="698.0">
                            <children>
-                              <Label text="Label" />
+                              <Label alignment="CENTER_RIGHT" prefHeight="40.0" prefWidth="200.0" text="Films:">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font></Label>
+                              <ListView fx:id="Films" prefHeight="200.0" prefWidth="225.0" />
                            </children></HBox>
                      </children>
                   </VBox>

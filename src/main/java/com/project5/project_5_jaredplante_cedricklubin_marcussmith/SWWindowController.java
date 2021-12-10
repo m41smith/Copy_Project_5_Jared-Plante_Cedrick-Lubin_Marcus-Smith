@@ -10,6 +10,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextInputDialog;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class SWWindowController implements Initializable {
@@ -20,8 +21,13 @@ public class SWWindowController implements Initializable {
     @FXML
     private TextField DoB;
     @FXML
+    private TextField HomeWorld;
+    @FXML
+    private ListView Films;
+    @FXML
     private ListView<SWDataHandler.StarWarsDataType> ListControl;
     private SWDataHandler Model;
+
     public void loadData(){
         var site = "https://swapi.dev/api/people/?search=";
         var params = getQueryParams();
@@ -32,6 +38,7 @@ public class SWWindowController implements Initializable {
                 FXCollections.observableArrayList(SWList);
         ListControl.setItems(dataToShow);
     }
+
     private String getQueryParams() {
         TextInputDialog inputGrabber = new TextInputDialog("Luke");
         inputGrabber.setHeaderText("Gathering Information for query");
@@ -53,6 +60,9 @@ public class SWWindowController implements Initializable {
                 Name.setText(newValue.name);
                 Height.setText(newValue.height + "cm");
                 DoB.setText(newValue.birth_year);
+                HomeWorld.setText(newValue.homeworld);
+                var filmList = FXCollections.observableArrayList(newValue.films);
+                Films.setItems(filmList);
             }
         });
     }
