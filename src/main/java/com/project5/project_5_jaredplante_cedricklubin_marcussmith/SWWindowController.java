@@ -30,6 +30,7 @@ public class SWWindowController implements Initializable {
     private ListView<SWDataHandler.StarWarsDataType> ListControl;
     private SWDataHandler Model;
 
+    //loads api Data
     public void loadData(){
         var site = "https://swapi.dev/api/people/?search=";
         var params = getQueryParams();
