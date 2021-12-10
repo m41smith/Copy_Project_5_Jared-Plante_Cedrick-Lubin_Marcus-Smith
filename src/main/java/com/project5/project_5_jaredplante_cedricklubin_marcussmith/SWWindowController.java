@@ -9,7 +9,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextInputDialog;
-
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -23,7 +22,6 @@ public class SWWindowController implements Initializable {
     @FXML
     private ListView<SWDataHandler.StarWarsDataType> ListControl;
     private SWDataHandler Model;
-
     public void loadData(){
         var site = "https://swapi.dev/api/people/?search=";
         var params = getQueryParams();
@@ -34,7 +32,6 @@ public class SWWindowController implements Initializable {
                 FXCollections.observableArrayList(SWList);
         ListControl.setItems(dataToShow);
     }
-
     private String getQueryParams() {
         TextInputDialog inputGrabber = new TextInputDialog("Luke");
         inputGrabber.setHeaderText("Gathering Information for query");
@@ -47,8 +44,6 @@ public class SWWindowController implements Initializable {
             return "";
         }
     }
-
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         loadData();
@@ -56,7 +51,7 @@ public class SWWindowController implements Initializable {
             @Override
             public void changed(ObservableValue<? extends SWDataHandler.StarWarsDataType> observable, SWDataHandler.StarWarsDataType oldValue, SWDataHandler.StarWarsDataType newValue) {
                 Name.setText(newValue.name);
-                Height.setText(newValue.height);
+                Height.setText(newValue.height + "cm");
                 DoB.setText(newValue.birth_year);
             }
         });

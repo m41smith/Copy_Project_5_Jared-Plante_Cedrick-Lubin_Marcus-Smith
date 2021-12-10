@@ -37,8 +37,15 @@ public class SWDataHandler {
         }
         var responseBody = response.body();
         var jsonInterpreter = new Gson();
-        var StarWarsData = jsonInterpreter.fromJson(responseBody, StarWarsDataType.class);
-        return StarWarsData;
+        var StarWarsData = jsonInterpreter.fromJson(responseBody, StarWarsResponse.class);
+        return StarWarsData.results[0];
+    }
+
+    class StarWarsResponse{
+        int count;
+        String next;
+        String previous;
+        StarWarsDataType[] results;
     }
 
     class StarWarsDataType{

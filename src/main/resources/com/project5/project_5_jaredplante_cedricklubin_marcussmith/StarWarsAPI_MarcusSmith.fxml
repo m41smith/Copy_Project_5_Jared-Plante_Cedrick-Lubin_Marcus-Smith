@@ -2,35 +2,64 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="300.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.project5.project_5_jaredplante_cedricklubin_marcussmith.SWWindowController">
+<AnchorPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.project5.project_5_jaredplante_cedricklubin_marcussmith.SWWindowController">
    <children>
-      <SplitPane prefHeight="400.0" prefWidth="600.0">
+      <SplitPane prefHeight="600.0" prefWidth="900.0">
          <items>
-            <AnchorPane prefHeight="200.0" prefWidth="200.0">
+            <AnchorPane>
                <children>
-                  <ListView fx:id="ListControl" prefHeight="398.0" prefWidth="200.0" />
-                  <VBox layoutX="200.0" prefHeight="398.0" prefWidth="398.0">
+                  <ListView fx:id="ListControl" layoutY="128.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="472.0" prefWidth="200.0" />
+                  <VBox layoutX="200.0" prefHeight="598.0" prefWidth="698.0">
                      <children>
-                        <HBox prefHeight="62.0" prefWidth="398.0">
+                        <HBox prefHeight="129.0" prefWidth="698.0" />
+                        <HBox prefHeight="60.0" prefWidth="698.0">
                            <children>
-                              <Label alignment="CENTER_RIGHT" prefHeight="17.0" prefWidth="175.0" text="Name:" />
-                              <TextField fx:id="Name" prefHeight="38.0" prefWidth="224.0" />
+                              <Label alignment="CENTER_RIGHT" prefHeight="40.0" prefWidth="200.0" text="Name:">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font></Label>
+                              <TextField fx:id="Name" prefHeight="40.0" prefWidth="225.0" />
                            </children></HBox>
-                        <HBox prefHeight="62.0" prefWidth="398.0">
+                        <HBox prefHeight="60.0" prefWidth="398.0">
                            <children>
-                              <Label alignment="CENTER_RIGHT" prefHeight="17.0" prefWidth="177.0" text="Height:" />
-                              <TextField fx:id="Height" prefHeight="41.0" prefWidth="222.0" />
+                              <Label alignment="CENTER_RIGHT" prefHeight="40.0" prefWidth="200.0" text="Height:">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font></Label>
+                              <TextField fx:id="Height" prefHeight="40.0" prefWidth="225.0" />
                            </children>
                         </HBox>
-                        <HBox prefHeight="100.0" prefWidth="200.0">
+                        <HBox prefHeight="60.0" prefWidth="698.0">
                            <children>
-                              <Label alignment="CENTER_RIGHT" prefHeight="17.0" prefWidth="178.0" text="DoB:" />
-                              <TextField fx:id="DoB" prefHeight="41.0" prefWidth="222.0" />
+                              <Label alignment="CENTER_RIGHT" prefHeight="40.0" prefWidth="200.0" text="DoB:">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font></Label>
+                              <TextField fx:id="DoB" prefHeight="40.0" prefWidth="225.0" />
                            </children>
                         </HBox>
+                        <HBox prefHeight="60.0" prefWidth="200.0">
+                           <children>
+                              <Label alignment="CENTER_RIGHT" prefHeight="40.0" prefWidth="200.0" text="Home Planet:">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font></Label>
+                              <TextField prefHeight="40.0" prefWidth="225.0" />
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="230.0" prefWidth="698.0">
+                           <children>
+                              <Label text="Label" />
+                           </children></HBox>
                      </children>
                   </VBox>
+                  <Label alignment="CENTER" layoutY="88.0" prefHeight="40.0" prefWidth="200.0" text="Character Results">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Label>
                </children>
             </AnchorPane>
          </items>
